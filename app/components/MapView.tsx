@@ -70,6 +70,12 @@ export default function MapView() {
 
   const center = useMemo(() => ({ lat: 36.7783, lon: -119.4179 }), []); // California center
 
+  // California bounds to constrain the map view
+  const californiaBounds = useMemo(() => [
+    [32.5121, -124.4091], // Southwest corner
+    [42.0095, -114.1312]  // Northeast corner
+  ], []);
+
   const matchingCount = useMemo(
     () => results.filter((r) => r.apartments.length >= minApts).length,
     [results, minApts]
@@ -119,7 +125,9 @@ export default function MapView() {
       <div className="w-full h-full">
         <MapContainer
           center={[center.lat, center.lon]}
-          zoom={6}
+          zoom={7}
+          maxBounds={californiaBounds}
+          maxBoundsViscosity={1.0}
           style={{ width: "100%", height: "100%" }}
         >
           <TileLayer

@@ -74,21 +74,77 @@ class TacoAptApp {
         this.updateStats('Loading data...');
         
         try {
-            // For demo purposes, we'll use mock data
-            // In a real app, this would fetch from your API
-            this.data = this.getMockData();
+            // Load data from CSV file
+            const response = await fetch('data/california-tacobells.csv');
+            const csvText = await response.text();
+            this.data = this.parseCSV(csvText);
             this.updateMap();
             this.updateStats(`Loaded ${this.data.length} Taco Bell locations`);
         } catch (error) {
             console.error('Error loading data:', error);
-            this.updateStats('Error loading data');
+            this.updateStats('Error loading data - using mock data');
+            // Fallback to mock data if CSV fails
+            this.data = this.getMockData();
+            this.updateMap();
         } finally {
             this.isLoading = false;
         }
     }
     
+    parseCSV(csvText) {
+        const lines = csvText.trim().split('\n');
+        const headers = lines[0].split(',');
+        const data = [];
+        
+        // Group by taco_id to create the structure we need
+        const tacoGroups = {};
+        
+        for (let i = 1; i < lines.length; i++) {
+            const values = lines[i].split(',');
+            const row = {};
+            
+            headers.forEach((header, index) => {
+                row[header.trim()] = values[index]?.trim() || '';
+            });
+            
+            const tacoId = row.taco_id;
+            if (!tacoGroups[tacoId]) {
+                tacoGroups[tacoId] = {
+                    taco: {
+                        id: parseInt(tacoId),
+                        name: row.taco_name,
+                        lat: parseFloat(row.taco_lat),
+                        lon: parseFloat(row.taco_lon),
+                        street: row.taco_street,
+                        city: row.taco_city,
+                        state: row.taco_state,
+                        postcode: row.taco_postcode
+                    },
+                    apartments: []
+                };
+            }
+            
+            // Add apartment if it exists
+            if (row.apartment_id && row.apartment_name) {
+                tacoGroups[tacoId].apartments.push({
+                    id: parseInt(row.apartment_id),
+                    name: row.apartment_name,
+                    lat: parseFloat(row.apartment_lat),
+                    lon: parseFloat(row.apartment_lon),
+                    distanceM: parseFloat(row.distance_m),
+                    street: row.apartment_street || '',
+                    city: row.apartment_city || '',
+                    state: row.apartment_state || '',
+                    postcode: row.apartment_postcode || ''
+                });
+            }
+        }
+        
+        return Object.values(tacoGroups);
+    }
+    
     getMockData() {
-        // Mock data for demonstration
+        // Mock data for demonstration (fallback)
         return [
             {
                 taco: {

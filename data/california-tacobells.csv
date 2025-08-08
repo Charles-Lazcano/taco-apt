@@ -1,0 +1,12 @@
+taco_id,taco_name,taco_lat,taco_lon,taco_street,taco_city,taco_state,taco_postcode,apartment_id,apartment_name,apartment_lat,apartment_lon,distance_m
+1,Taco Bell,37.7749,-122.4194,123 Main St,San Francisco,CA,94102,1,Sunset Apartments,37.7750,-122.4195,150
+1,Taco Bell,37.7749,-122.4194,123 Main St,San Francisco,CA,94102,2,Golden Gate Residences,37.7755,-122.4200,450
+2,Taco Bell,34.0522,-118.2437,456 Broadway,Los Angeles,CA,90012,3,Downtown Lofts,34.0525,-118.2440,200
+3,Taco Bell,32.7157,-117.1611,789 Harbor Dr,San Diego,CA,92101,4,Seaside Apartments,32.7160,-117.1615,180
+4,Taco Bell,38.5816,-121.4944,321 Capitol Ave,Sacramento,CA,95814,5,Capitol Heights,38.5820,-121.4948,220
+5,Taco Bell,36.7378,-119.7871,654 Fresno St,Fresno,CA,93721,6,Central Valley Residences,36.7382,-119.7875,280
+6,Taco Bell,33.7490,-117.9931,987 Orange Ave,Anaheim,CA,92801,7,Disneyland Apartments,33.7495,-117.9935,320
+7,Taco Bell,37.3382,-121.8863,456 San Jose Blvd,San Jose,CA,95112,8,Silicon Valley Lofts,37.3387,-121.8867,250
+8,Taco Bell,36.1699,-115.1398,789 Las Vegas Blvd,Las Vegas,NV,89101,9,Strip Residences,36.1704,-115.1402,300
+9,Taco Bell,34.0522,-118.2437,123 Hollywood Blvd,Los Angeles,CA,90028,10,Hollywood Heights,34.0527,-118.2441,240
+10,Taco Bell,37.7749,-122.4194,456 Mission St,San Francisco,CA,94105,11,Mission Bay Apartments,37.7754,-122.4198,190

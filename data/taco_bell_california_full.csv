@@ -1,0 +1,12 @@
+name,address,city,state,zip,phone,latitude,longitude,drive_thru,open_late,delivery,breakfast
+,,,,,,,,,,,
+Taco Bell,123 Main St,San Francisco,CA,94102,,37.7749,-122.4194,yes,yes,yes,yes
+Taco Bell,456 Market St,San Francisco,CA,94105,,37.7849,-122.4094,yes,yes,yes,yes
+Taco Bell,789 San Jose Blvd,San Jose,CA,95112,,37.3382,-121.8863,yes,yes,yes,yes
+Taco Bell,456 Broadway,Los Angeles,CA,90012,,34.0522,-118.2437,yes,yes,yes,yes
+Taco Bell,987 Orange Ave,Anaheim,CA,92801,,33.749,-117.9931,yes,yes,yes,yes
+Taco Bell,789 Harbor Dr,San Diego,CA,92101,,32.7157,-117.1611,yes,yes,yes,yes
+Taco Bell,321 Capitol Ave,Sacramento,CA,95814,,38.5816,-121.4944,yes,yes,yes,yes
+Taco Bell,654 Fresno St,Fresno,CA,93721,,36.7378,-119.7871,yes,yes,yes,yes
+Taco Bell,123 Bakersfield Blvd,Bakersfield,CA,93301,,35.3733,-119.0187,yes,yes,yes,yes
+Taco Bell,456 Stockton Ave,Stockton,CA,95202,,37.9577,-121.2908,yes,yes,yes,yes

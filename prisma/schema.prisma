@@ -1,0 +1,59 @@
+// Prisma schema for Taco Apt project
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model TacoBell {
+  id            Int       @id @default(autoincrement())
+  osmId         String    @unique
+  name          String?
+  brand         String?
+  street        String?
+  city          String?
+  state         String?
+  postcode      String?
+  lat           Float
+  lon           Float
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  nearApartments ApartmentProximity[]
+}
+
+model Apartment {
+  id        Int      @id @default(autoincrement())
+  osmId     String   @unique
+  name      String?
+  street    String?
+  city      String?
+  state     String?
+  postcode  String?
+  lat       Float
+  lon       Float
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  nearTacos ApartmentProximity[]
+}
+
+model ApartmentProximity {
+  id           Int        @id @default(autoincrement())
+  tacoBellId   Int
+  apartmentId  Int
+  distanceM    Float
+  createdAt    DateTime   @default(now())
+
+  tacoBell   TacoBell  @relation(fields: [tacoBellId], references: [id], onDelete: Cascade)
+  apartment  Apartment @relation(fields: [apartmentId], references: [id], onDelete: Cascade)
+
+  @@unique([tacoBellId, apartmentId])
+  @@index([tacoBellId])
+  @@index([apartmentId])
+  @@index([distanceM])
+}
+
+

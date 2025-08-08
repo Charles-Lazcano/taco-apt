@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taco Apt - Taco Bells near Apartments</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌮 Taco Apt</h1>
+            <p>Find Taco Bells near apartment complexes in California</p>
+        </header>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="radius">Radius: <span id="radiusValue">800</span>m</label>
+                <input type="range" id="radius" min="100" max="2000" value="800" step="50">
+            </div>
+            
+            <div class="control-group">
+                <label for="minApartments">Min Apartments: <span id="minApartmentsValue">1</span></label>
+                <input type="range" id="minApartments" min="0" max="10" value="1" step="1">
+            </div>
+            
+            <div class="control-group">
+                <label>
+                    <input type="checkbox" id="showNonMatching">
+                    Show non-matching Taco Bells
+                </label>
+            </div>
+            
+            <button id="exportBtn" class="export-btn">Export CSV</button>
+            <button id="refreshBtn" class="refresh-btn">Refresh Data</button>
+        </div>
+        
+        <div class="stats">
+            <span id="stats">Loading...</span>
+        </div>
+        
+        <div id="map"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

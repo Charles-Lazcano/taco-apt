@@ -26,6 +26,11 @@ type Taco = {
   city?: string | null;
   state?: string | null;
   postcode?: string | null;
+  phone?: string | null;
+  drive_thru?: string | null;
+  open_late?: string | null;
+  delivery?: string | null;
+  breakfast?: string | null;
 };
 
 type Result = {
@@ -80,6 +85,15 @@ export default function MapView() {
     () => results.filter((r) => r.apartments.length >= minApts).length,
     [results, minApts]
   );
+
+  const renderFeatures = (taco: Taco) => {
+    const features = [];
+    if (taco.drive_thru === "yes") features.push("Drive-thru");
+    if (taco.open_late === "yes") features.push("Open Late");
+    if (taco.delivery === "yes") features.push("Delivery");
+    if (taco.breakfast === "yes") features.push("Breakfast");
+    return features.length > 0 ? features.join(", ") : "Standard hours";
+  };
 
   return (
     <div className="w-full h-[calc(100vh-0px)] grid grid-rows-[auto_1fr]">
@@ -141,6 +155,14 @@ export default function MapView() {
                   <div className="font-semibold">{r.taco.name ?? "Taco Bell"}</div>
                   <div className="text-xs text-gray-600">
                     {[r.taco.street, r.taco.city, r.taco.state, r.taco.postcode].filter(Boolean).join(", ")}
+                  </div>
+                  {r.taco.phone && (
+                    <div className="text-xs text-blue-600">
+                      📞 {r.taco.phone}
+                    </div>
+                  )}
+                  <div className="text-xs text-green-600">
+                    ✨ {renderFeatures(r.taco)}
                   </div>
                   <div className="text-sm">Nearby apartments within {radiusM} m: {r.apartments.length}</div>
                   <ul className="max-h-40 overflow-auto text-sm list-disc pl-5">

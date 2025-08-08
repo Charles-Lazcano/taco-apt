@@ -18,8 +18,13 @@ model TacoBell {
   city          String?
   state         String?
   postcode      String?
+  phone         String?
   lat           Float
   lon           Float
+  drive_thru    String?
+  open_late     String?
+  delivery      String?
+  breakfast     String?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   nearApartments ApartmentProximity[]

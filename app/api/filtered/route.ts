@@ -27,7 +27,22 @@ export async function GET(req: NextRequest) {
 
   return Response.json(
     filtered.map(({ taco, apts }) => ({
-      taco,
+      taco: {
+        id: taco.id,
+        name: taco.name,
+        brand: taco.brand,
+        lat: taco.lat,
+        lon: taco.lon,
+        street: taco.street,
+        city: taco.city,
+        state: taco.state,
+        postcode: taco.postcode,
+        phone: taco.phone,
+        drive_thru: taco.drive_thru,
+        open_late: taco.open_late,
+        delivery: taco.delivery,
+        breakfast: taco.breakfast,
+      },
       apartments: apts
         .sort((a, b) => a.distanceM - b.distanceM)
         .map((p) => ({

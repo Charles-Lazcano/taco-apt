@@ -26,6 +26,7 @@ build/
 .cache/
 .parcel-cache/
 .npm/
+data-cache/
 
 # IDE
 .vscode/
